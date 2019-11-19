@@ -4,6 +4,7 @@
     width: 100vw;
     justify-content: center;
     display: flex;
+    justify-content: space-between;
 }
 
 .login-layout__content {
@@ -36,7 +37,7 @@
 
   
 .button {
-    background: #666;
+    background: rgb(83, 27, 27);
     padding: 1.6rem;
     font-size: 3rem;
     color: white;
