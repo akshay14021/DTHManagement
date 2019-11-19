@@ -18,9 +18,10 @@
             <img src="assets/img/eternity.png" alt="">
             <h1 class="login-layout__title">Infinity DTH Services</h1>
             <p class="login-layout__subtitle">Your one place for entertainment</p>
-            <form class="form" action="">   
-                <input class="text-input" id="uname" type="text" placeholder="Username" required>
-                <input class="text-input" id="pass"  type="password" placeholder="Password" required>
+            <form class="form" action="Controller" method="post" >
+            	<input type="hidden" name="option" value="login">   
+                <input class="text-input" id="uname" type="text" name="uname" placeholder="Username" required>
+                <input class="text-input" id="pass"  type="password" name="password" placeholder="Password" required>
                 <button id="button" class="button">Login</button>
             </form>
         </div>
