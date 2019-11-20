@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/base.css">
@@ -20,9 +22,9 @@
         <div class="admin-header__links">
             <a href="dashboard.jsp"><img class="image image--header" src="assets/img/eternity.png" alt=""></a>
             <div class="admin-header__content">
-                <a href="settop.html" class="admin-header__content__data">Set-top box</a>
-                <a href="channels.html" class="admin-header__content__data">Channels</a>
-                <a href="packages.html" class="admin-header__content__data">Packages</a>
+                <a href="settop.html" id="admin-header__content__data">Set-top box</a>
+                <a href="channels.html" id="admin-header__content__data">Channels</a>
+                <a href="packages.html" id="admin-header__content__data">Packages</a>
             </div>
         </div>
         <button class="button">Logout</button>
@@ -38,7 +40,7 @@
                 </div>
                 <div class="form__content">
                     <label for="features">Features</label>
-                    <select multiple="multiple" size="5" class="text-input" name="features">
+                    <select multiple="multiple" size="5" class="form-control" id="exampleFormControlSelect2 name="features">
                     	<option value="MultilingualChannelGuide">Multi-lingual Channel Guide</option>
                     	<option value="GenreWiseChannelGuide">Genre-Wise Channel Guide</option>
                     	<option value="ChildLock">ChildLock</option>

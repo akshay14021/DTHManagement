@@ -22,7 +22,7 @@
     margin-top: 10px;
 }
 
-.admin-header__content__data {
+#admin-header__content__data {
     margin-left: 25px;
     color: white;
     font-size: 2.4rem;
@@ -44,9 +44,15 @@
 .button--add {
     position: relative;
     top: 50%;
-    left: 25%;
-    width: 50%;
-    margin-top: 24px
+    left: 35%;
+    width: 30%;
+    margin-top: 40px
+}
+
+.button--feature {
+    font-size: 10px;
+    padding: 10px;
+    margin-right: 5px;
 }
 
 .content-container {
@@ -69,14 +75,31 @@
 table, th, td {
     border: 1px solid #666;
     border-collapse: collapse;
-    font-size: 20px;
-    position: relative;
-    left: 1.3%;
+    font-size: 16px;
 }
 
 th, td {
-    padding: 6px 20px 6px 5px;
+    padding: 6px 0px 6px 6px;
     text-align: left;    
+}
+
+@media(min-width: 1500px) {
+    .content-container {
+        max-width: 180rem;
+    }
+
+    table, th, td {
+        border: 1px solid #666;
+        border-collapse: collapse;
+        font-size: 20px;
+        position: relative;
+        left: 4%;
+    }
+}
+
+.table-row__content {
+    display: flex;
+    justify-content: space-around;
 }
 
 .thead-data {
@@ -91,8 +114,4 @@ th, td {
 
 .tdata__content {
     color: rgb(66, 64, 64);
-}
-
-.table__body:hover {
-    background: #f8b6a8;
 }

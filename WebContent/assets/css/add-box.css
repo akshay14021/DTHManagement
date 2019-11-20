@@ -58,3 +58,11 @@ label {
     font-size: 1.8rem;
     font-weight: 300;
 }
+
+.input--features {
+	font-size: 10px;
+}
+
+option {
+	font-size: 2.2rem;
+}
