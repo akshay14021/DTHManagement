@@ -1,0 +1,60 @@
+.content-container {
+    max-width: 85rem;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.add-settop__header {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 35px;
+}
+
+.form {
+    border: 1px solid #666;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.form__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.dimension-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dimension-content__value {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.dimension-content__value--2 {
+    margin-left: 21px;
+}
+
+.button--add {
+    position: relative;
+    top: 50%;
+    left: 25%;
+    width: 50%;
+    margin-top: 24px
+}
+
+.text-input {
+    border: 1px solid #cacccd;
+    height: 48px;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
