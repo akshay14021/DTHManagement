@@ -30,10 +30,24 @@
     <div class="add-settop">
         <div class="content-container">
             <h1 class="add-settop__header">Add Box</h1>
-            <form class="form" action="">
+            <form class="form" action="Controller" method="post">
+            <input type="hidden" name="option" value="addSetupBox">
                 <div class="form__content">
                     <label for="set-top">Set-top box type</label>
                     <input class="text-input" type="text" name="typeSetopBox">
+                </div>
+                <div class="form__content">
+                    <label for="features">Features</label>
+                    <select multiple="multiple" size="5" class="text-input" name="features">
+                    	<option value="MultilingualChannelGuide">Multi-lingual Channel Guide</option>
+                    	<option value="GenreWiseChannelGuide">Genre-Wise Channel Guide</option>
+                    	<option value="ChildLock">ChildLock</option>
+                    	<option value="ForwardAndRewind">Forward-And-Rewind</option>
+                    	<option value="SlowMotion">Slow-Motion</option>
+                    	<option value="ProgramReminder">Program Reminder</option>
+                    	<option value="PauseAndPlay">Pause-And-Play</option>
+                    	<option value="LiveRecording">Live-Recording</option>
+                    </select>
                 </div>
                 <div class="form__content">
                     <label for="price">Price</label>
@@ -67,7 +81,10 @@
                 </div>
                 <div class="form__content">
                     <label for="billing">Billing Type</label>
-                    <input class="text-input" type="text" name="billing">
+                    <select class="text-input" name="billingtype">
+                    	<option value="prepaid">Prepaid</option>
+                    	<option value="postpaid">Postpaid</option>
+                    </select>
                 </div>
                 <div class="form__content">
                     <label for="refund">Refundable Amount</label>
