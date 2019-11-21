@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
+ 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +24,28 @@
     <title>Dashboard</title>
 </head>
 <body>
+
+<%
+try{
+	Connection con=null;
+	Statement st=null;
+	ResultSet rs=null;
+	String info="oracle.jdbc.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:XE";
+	String un="system";
+	String pwd="niyati";
+	String query="SELECT * FROM GenericSetTopBox";
+	
+	Class.forName(info);
+	
+	con=DriverManager.getConnection(url,un,pwd);
+	
+	st=con.createStatement();
+	
+	rs=st.executeQuery(query);
+		
+
+%>
     <header class="admin-header">
         <div class="admin-header__links">
             <a href="dashboard.jsp"><img class="image image--header" src="assets/img/eternity.png" alt=""></a>
@@ -46,46 +75,56 @@
                                 <th class="thead__content">Refundable Price</th>
                             </tr>
                         </thead>
+                        
+                        
+                        <%
+                        
+                        while(rs.next())
+                        {
+                        
+                        
+                        %>
                         <tbody class="table__body">
                             <tr>
-                                <td class="tdata__content">HD</td>
-                                <td class="tdata__content">$50</td>
-                                <td class="tdata__content">$100</td>
-                                <td class="tdata__content">10 X 5 X 3</td>
-                                <td class="tdata__content">$60</td>
-                                <td class="tdata__content">$20</td>
-                                <td class="tdata__content">Prepaid</td>
-                                <td class="tdata__content">$200</td>
+                                <td class="tdata__content"><%out.print(rs.getString("settopboxtype"));%></td>
+                                <td class="tdata__content">$<%out.print(rs.getInt("price"));%></td>
+                                <td class="tdata__content">$<%out.print(rs.getInt("installationcharges"));%></td>
+                                <td class="tdata__content"><%out.print(rs.getInt("length")+"X"+rs.getInt("breadth")+"X"+rs.getInt("width"));%></td>
+                                <td class="tdata__content">$<%out.print(rs.getInt("upgradationcharges"));%></td>
+                                <td class="tdata__content">$<%out.print(rs.getInt("discount"));%></td>
+                                <td class="tdata__content"><%out.print(rs.getString("billingtype"));%></td>
+                                <td class="tdata__content">$<%out.print(rs.getInt("refundabledepoamt"));%></td>
                                 <td>
                                     <button type="button" class="button button--feature" data-toggle="modal" data-target="#exampleModal">
                                     Show Features
                                     </button>
                                 </td>
+                                <td><%  out.print("<a href='Controller?option=deleteGeneric&aId="+rs.getString(1)+"'>"); %><button class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></a></td>
+                                <td><button class="btn btn-warning">Edit</button></td>
                             </tr>
                         </tbody>  
-                        <tbody class="table__body">
-                            <tr>
-                                <td class="tdata__content">SD</td>
-                                <td class="tdata__content">$30</td>
-                                <td class="tdata__content">$100</td>
-                                <td class="tdata__content">10 X 6 X 4</td>
-                                <td class="tdata__content">$40</td>
-                                <td class="tdata__content">$30</td>
-                                <td class="tdata__content">Postpaid</td>
-                                <td class="tdata__content">$100</td>
-                                <td>
-                                    <button type="button" class="button button--feature" data-toggle="modal" data-target="#exampleModal">
-                                        Show Features
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        
+                        <%
+                        }
+                        %>
+                        
                     </table>
                 </div>
                 <a href="addSet-top.jsp"><button class="button button--add">Add New Set-top Box</button></a>
             </div>
         </div>
     </div>
+    
+    
+<%
+}
+catch(Exception e)
+{
+	
+}
+   
+   
+%>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

@@ -17,7 +17,27 @@ public class Controller extends HttpServlet {
 	HttpSession mysess=null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String option = request.getParameter("option");
+		System.out.println(option);
+		switch(option)
+		{
+			case "deleteGeneric":
+			try {
+				DeleteGeneric dg = new DeleteGeneric();
+				
+				int i = dg.deleteSetTop(request.getParameter("aId"));
+				int k = dg.deletefeature(request.getParameter("aId"));
+				response.sendRedirect("dashboard.jsp");
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			break;
+			
 		
+			
+		}
 	}
 
 	/**
@@ -28,6 +48,7 @@ public class Controller extends HttpServlet {
 		doGet(request, response);
 		
 		String option = request.getParameter("option");
+		System.out.println(option);
 		
 		switch(option)
 		{
@@ -76,6 +97,24 @@ public class Controller extends HttpServlet {
 					System.out.println(e);
 				}
 				break;
+				
+			case "deleteGeneric":
+				try {
+					DeleteGeneric dg = new DeleteGeneric();
+					
+					int i = dg.deleteSetTop(request.getParameter("aId"));
+					
+					
+					if(i==1)
+						response.sendRedirect("dashboard.jsp");
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+				break;
+				
+			
 				
 		}
 		
