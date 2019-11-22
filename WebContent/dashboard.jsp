@@ -33,7 +33,7 @@ try{
 	String info="oracle.jdbc.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:XE";
 	String un="system";
-	String pwd="niyati";
+	String pwd="tcs12345";
 	String query="SELECT * FROM GenericSetTopBox";
 	
 	Class.forName(info);
@@ -73,6 +73,7 @@ try{
                                 <th class="thead__content">Discount</th>
                                 <th class="thead__content">Billing Type</th>
                                 <th class="thead__content">Refundable Price</th>
+                                <th colspan="3" class="thead__content">Actions</th>
                             </tr>
                         </thead>
                         
@@ -99,8 +100,8 @@ try{
                                     Show Features
                                     </button>
                                 </td>
-                                <td><%  out.print("<a href='Controller?option=deleteGeneric&aId="+rs.getString(1)+"'>"); %><button class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></a></td>
-                                <td><button class="btn btn-warning">Edit</button></td>
+                                <td><%  out.print("<a href='Controller?option=deleteGeneric&aId="+rs.getString(1)+"'>"); %><button id="button--delete" class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></a></td>
+                                <td><button id="button--edit" class="btn btn-warning">Edit</button></td>
                             </tr>
                         </tbody>  
                         
@@ -131,17 +132,46 @@ catch(Exception e)
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Set-top Box Features</h5>
+                    <h1 class="modal-title" id="exampleModalLabel">Set-top Box Features</h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <table>
+                    	<thead class="thead-data">
+                    		<tr>
+                    			<th class="thead__content">Features</th>
+                    			<th class="thead__content">Yes / No</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody class="table__body">
+                    		<tr>
+                    			<td class="tdata__content">Multilingual Channel Guide</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Genre Wise Channel Guide</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Child Lock</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Forward And Rewind</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Slow Motion</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Pause and Play</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="tdata__content">Live Recording</td>
+                    		</tr>
+                    	</tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

@@ -93,7 +93,6 @@ th, td {
         border-collapse: collapse;
         font-size: 20px;
         position: relative;
-        left: 4%;
     }
 }
 
@@ -114,4 +113,14 @@ th, td {
 
 .tdata__content {
     color: rgb(66, 64, 64);
+}
+
+#button--delete {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+#button--edit {
+    font-size: 16px;
+    margin-right: 5px;
 }
