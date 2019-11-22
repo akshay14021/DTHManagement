@@ -28,22 +28,24 @@
 try{
 	Connection con=null;
 	Statement st=null;
+	//Statement st2=null;
 	ResultSet rs=null;
 	//ResultSet fs=null;
 	String info="oracle.jdbc.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:XE";
 	String un="system";
-	String pwd="niyati";
+	String pwd="admin";
 	String query="SELECT * FROM GenericSetTopBox where settopboxtype='Standard'";
-	//String fquery="select* from Features where settopboxtype='gjhygjh'";
+	//String fquery="select* from Features where settopboxtype='Standard'";
 	Class.forName(info);
 	
 	con=DriverManager.getConnection(url,un,pwd);
 	
 	st=con.createStatement();
+	//st2=con.createStatement();
 	
 	rs=st.executeQuery(query);
-	//fs=st.executeQuery(fquery);
+	//fs=st2.executeQuery(fquery);
 		
 
 %>
@@ -69,25 +71,24 @@ try{
                         %>
             <h1 class="add-settop__header">Update Set-top Box</h1>
             <form class="form" action="Controller" method="post">
-            <input type="hidden" name="option" value="addSetupBox">
+            <input type="hidden" name="option" value="editSetupBox">
                 <div class="form__content">
                     <label for="set-top">Set-top box type</label>
                     <input class="text-input" type="text" name="typeSetopBox" value="<%out.print(rs.getString("settopboxtype"));%>">
                 </div>
                 <div class="form__content">
-                
                     <label for="features">Features</label>
-                    <select multiple="multiple" size="5" class="form-control" id="exampleFormControlSelect2 name="features">
+                    <select multiple="multiple" size="5" class="form-control" id="exampleFormControlSelect2" name="features">
                     	<option value="MultilingualChannelGuide">Multi-lingual Channel Guide</option>
                     	<option value="GenreWiseChannelGuide">Genre-Wise Channel Guide</option>
-                    	<option value="ChildLock">ChildLock:</option>
+                    	<option value="ChildLock">ChildLock</option>
                     	<option value="ForwardAndRewind">Forward-And-Rewind</option>
                     	<option value="SlowMotion">Slow-Motion</option>
                     	<option value="ProgramReminder">Program Reminder</option>
                     	<option value="PauseAndPlay">Pause-And-Play</option>
                     	<option value="LiveRecording">Live-Recording</option>
                     </select>
-                </div>
+                </div>  
                 <div class="form__content">
                     <label for="price">Price</label>
                     <input class="text-input" type="text" name="price" value="<%out.print(rs.getString("price"));%>">
@@ -119,13 +120,24 @@ try{
                     <input class="text-input" type="text" name="discount" value="<%out.print(rs.getInt("discount"));%>">
                 </div>
                 <div class="form__content">
-                    <label for="refund">Billing Type</label>
-                    <input class="text-input" type="text" name="btype" value="<%out.print(rs.getInt("billingtype"));%>">
+                    <label for="billing">Billing Type</label>
+                    <input class="text-input" type="text" name="billingtype" value="<%out.print(rs.getString("billingtype"));%>">
                 </div>
                 <div class="form__content">
                     <label for="refund">Refundable Amount</label>
                     <input class="text-input" type="text" name="refund" value="<%out.print(rs.getInt("refundabledepoamt"));%>">
                 </div>
+                <%
+       
+}}                 
+catch(Exception e)
+{
+	System.out.println(e);
+}
+   
+   
+%>     
+
                  
                 <div class="form-content--button">
                     <button class="button button--add">Update</button>
@@ -133,15 +145,6 @@ try{
             </form>
         </div>
     </div>
-    <%}
-                        }
-                    
-catch(Exception e)
-{
-	
-}
-   
-   
-%>       
+      
 </body>
 </html>
