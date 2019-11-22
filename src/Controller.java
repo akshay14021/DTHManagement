@@ -126,10 +126,11 @@ public class Controller extends HttpServlet {
 					gsp.setWidth(Integer.parseInt(request.getParameter("width")));
 					gsp.setHeight(Integer.parseInt(request.getParameter("height")));
 					gsp.setUpcharges(Integer.parseInt(request.getParameter("upCharges")));
-					gsp.setBillingtype(request.getParameter("billingtype"));
 					gsp.setDiscount(Integer.parseInt(request.getParameter("discount")));
+					gsp.setBillingtype(request.getParameter("billingtype"));
 					gsp.setRefund(Integer.parseInt(request.getParameter("refund")));
 					
+										
 					int i = asb.addSetTopBox(gsp);
 					int k = asb.addfeatures(gsp,arr);
 					if(i==1 && k==1)

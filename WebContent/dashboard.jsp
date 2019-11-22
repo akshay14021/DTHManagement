@@ -30,6 +30,7 @@ try{
 	Connection con=null;
 	Statement st=null;
 	ResultSet rs=null;
+	ResultSet rs1=null;
 	String info="oracle.jdbc.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:XE";
 	String un="system";
@@ -44,7 +45,6 @@ try{
 	
 	rs=st.executeQuery(query);
 		
-
 %>
     <header class="admin-header">
         <div class="admin-header__links">
@@ -96,14 +96,21 @@ try{
                                 <td class="tdata__content"><%out.print(rs.getString("billingtype"));%></td>
                                 <td class="tdata__content">$<%out.print(rs.getInt("refundabledepoamt"));%></td>
                                 <td>
-                                    <button type="button" class="button button--feature" data-toggle="modal" data-target="#exampleModal">
-                                    Show Features
-                                    </button>
+                                
+                                <%  out.print("<button class='button button--feature' data-toggle='modal' data-target='#exampleModal' ><a href='dashboard.jsp?aId="+rs.getString(1)+"' style='color:white'>"); %>
+                                
+                                
+                                Show Features
+                                </a>
+                                </button>
+                                
+                                    
                                 </td>
                                 <td><%  out.print("<a href='Controller?option=deleteGeneric&aId="+rs.getString(1)+"'>"); %><button id="button--delete" class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></a></td>
                                 <td><a href="editSet-top.jsp"><button id="button--edit" class="btn btn-warning">Edit</button></td>
                             </tr>
-                        </tbody>  
+                        </tbody> 
+                        
                         
                         <%
                         }
@@ -118,14 +125,18 @@ try{
     
     
 <%
-}
-catch(Exception e)
-{
+
+	String query1="Select * from Features where settopboxtype='"+request.getParameter("aId")+"'";
+	System.out.println(query1);
+	Statement st1=con.createStatement();
 	
-}
-   
-   
+	rs1=st1.executeQuery(query1);
+	
+	rs1.next();
+	System.out.println(rs1.getString(2));
+	System.out.println(rs1.getString(3));
 %>
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -148,28 +159,45 @@ catch(Exception e)
                     	<tbody class="table__body">
                     		<tr>
                     			<td class="tdata__content">Multilingual Channel Guide</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(2));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Genre Wise Channel Guide</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(3));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Child Lock</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(4));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Forward And Rewind</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(5));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Slow Motion</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(6));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Pause and Play</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(7));%></td>
                     		</tr>
                     		<tr>
                     			<td class="tdata__content">Live Recording</td>
+                    			<td class="tdata__content" ><%out.print(rs1.getString(8));%></td>
+
                     		</tr>
                     	</tbody>
                     </table>
                 </div>
+<%
+}
+catch(Exception e)
+{
+	
+}
+   
+   
+%>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
