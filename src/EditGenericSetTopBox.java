@@ -5,17 +5,17 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.*;
 
-public class AddGenericSetTopBox {
+public class EditGenericSetTopBox {
 	public static Connection con=null;
 	public static PreparedStatement st=null;
 	public static ResultSet rs=null;
 	
-	public int addSetTopBox(GenericSetTopBox gsp) throws SQLException, ClassNotFoundException
+	public int editSetTopBox(GenericSetTopBox gsp) throws SQLException, ClassNotFoundException
 	{
 		Model conn = new Model();
 		con =conn.getConnection();
 		
-		String query="Insert into GenericSetTopBox(settopboxtype,length,breadth,width,price,installationcharges,upgradationcharges,discount,billingtype,refundabledepoamt) values (?,?,?,?,?,?,?,?,?,?)";
+		String query="select* from GenericSetTopBox where settopboxtype='Standard'";
 		st=con.prepareStatement(query);
 		
 		st.setString(1,gsp.getType());
@@ -38,23 +38,20 @@ public class AddGenericSetTopBox {
 	{
 		Model conn = new Model();
 		con =conn.getConnection();
-
 		
-		
-		String query="Insert into Features values (?,?,?,?,?,?,?,?,?,?)";
-		
+		String query="Insert into Features(FeatureId,MultilingualChannelGuide,GenreWiseChannelGuide,ChildLock,ForwardAndRewind,SlowMotion,ProgramReminder,PauseAndPlay,LiveRecording,settopboxtype) values (?,?,?,?,?,?,?,?,?,?)";
 		st=con.prepareStatement(query);
 		
-		st.setInt(1,113);
+		st.setInt(1,0);
+		
 		
 		List<String> wordList = Arrays.asList(arr);
-		
-		
 		
 		if(wordList.contains("MultilingualChannelGuide"))
 			st.setString(2, "yes");
 		else
 			st.setString(2, "no");
+		
 		if(wordList.contains("GenreWiseChannelGuide"))
 			st.setString(3, "yes");
 		else

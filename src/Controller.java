@@ -113,6 +113,33 @@ public class Controller extends HttpServlet {
 					System.out.println(e);
 				}
 				break;
+			case "editSetupBox":
+				try {
+					AddGenericSetTopBox asb = new AddGenericSetTopBox();
+					GenericSetTopBox gsp=new GenericSetTopBox();
+					
+					gsp.setType(request.getParameter("typeSetopBox"));
+					String[] arr=request.getParameterValues("features");
+					gsp.setPrice(Integer.parseInt(request.getParameter("price")));
+					gsp.setIcharge(Integer.parseInt(request.getParameter("iCharge")));
+					gsp.setLength(Integer.parseInt(request.getParameter("length")));
+					gsp.setWidth(Integer.parseInt(request.getParameter("width")));
+					gsp.setHeight(Integer.parseInt(request.getParameter("height")));
+					gsp.setUpcharges(Integer.parseInt(request.getParameter("upCharges")));
+					gsp.setBillingtype(request.getParameter("billingtype"));
+					gsp.setDiscount(Integer.parseInt(request.getParameter("discount")));
+					gsp.setRefund(Integer.parseInt(request.getParameter("refund")));
+					
+					int i = asb.addSetTopBox(gsp);
+					int k = asb.addfeatures(gsp,arr);
+					if(i==1 && k==1)
+						response.sendRedirect("dashboard.jsp");
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+				break;	
 				
 			
 				
