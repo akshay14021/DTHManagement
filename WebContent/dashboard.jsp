@@ -107,7 +107,7 @@ try{
                                     
                                 </td>
                                 <td><%  out.print("<a href='Controller?option=deleteGeneric&aId="+rs.getString(1)+"'>"); %><button id="button--delete" class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></a></td>
-                                <td><a href="editSet-top.jsp"><button id="button--edit" class="btn btn-warning">Edit</button></td>
+                                <td><%  out.print("<a href='editSet-top.jsp?aId="+rs.getString(1)+"'>"); %><button id="button--edit" class="btn btn-warning">Edit</button></td>
                             </tr>
                         </tbody> 
                         

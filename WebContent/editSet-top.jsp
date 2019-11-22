@@ -34,8 +34,9 @@ try{
 	String info="oracle.jdbc.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:XE";
 	String un="system";
-	String pwd="admin";
-	String query="SELECT * FROM GenericSetTopBox where settopboxtype='Standard'";
+	String pwd="niyati";
+	String aId = request.getParameter("aId");
+	String query="SELECT * FROM GenericSetTopBox where settopboxtype='"+aId+"'";
 	//String fquery="select* from Features where settopboxtype='Standard'";
 	Class.forName(info);
 	
