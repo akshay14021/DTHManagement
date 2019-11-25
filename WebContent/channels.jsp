@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="java.util.*"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
+    
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -17,6 +24,28 @@
     <title>Channels</title>
 </head>
 <body>
+<%
+try{
+	Connection con=null;
+	Statement st=null;
+	ResultSet rs=null;
+	ResultSet rs1=null;
+	String info="oracle.jdbc.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:XE";
+	String un="system";
+	String pwd="niyati";
+	String query="SELECT * FROM channels";
+	
+	Class.forName(info);
+	
+	con=DriverManager.getConnection(url,un,pwd);
+	
+	st=con.createStatement();
+	
+	rs=st.executeQuery(query);
+		
+%>
+
 	<header class="admin-header">
         <div class="admin-header__links">
             <a href="dashboard.jsp"><img class="image image--header" src="assets/img/eternity.png" alt=""></a>
@@ -46,19 +75,38 @@
                                 <th colspan="2" class="thead__content">Actions</th>
                             </tr>
                         </thead>
+                        
+                        <%
+                        
+                        while(rs.next())
+                        {
+                        
+                        
+                        %>
                         <tbody class="table__body">
                             <tr>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
-                                <td class="tdata__content"></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chname"));%> </td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chband"));%></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chvfreq"));%></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chafreq"));%></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chtypefta"));%></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chtranstypestd"));%></td>
+                                <td class="tdata__content"> <%out.print(rs.getString("chcharges"));%></td>
                                 <td><button id="button--delete" class='btn btn-danger' name="option" value="deleteGeneric">Delete</button></td>
                                 <td><button id="button--edit" class="btn btn-warning">Edit</button></td>
                             </tr>
                         </tbody>
+                        <%
+                        }
+}
+catch(Exception e)
+{
+	
+}
+   
+   
+%>
+                        
                         </table>
                 </div>
                 <a href="addChannel.jsp"><button class="button button--add">Add New Channel</button></a>
