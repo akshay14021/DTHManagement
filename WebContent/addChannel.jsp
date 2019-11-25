@@ -55,6 +55,7 @@
                 <div class="form__content">
                     <label for="CCT">Channel Charge Type</label>
                     <select id="CCT" class="text-input" name="cct">
+                    	<option value="none"></option>
                     	<option id="prepaid" value="FTA (Free to Air)">FTA (Free to Air)</option>
                     	<option id="postpaid" value="Paid">Paid</option>
                     </select>
@@ -76,5 +77,6 @@
             </form>
         </div>
     </div>
+    <script src="assets/js/channelLogic.js"></script>
 </body>
 </html>
