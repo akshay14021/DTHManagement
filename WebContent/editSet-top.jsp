@@ -122,7 +122,23 @@ try{
                 </div>
                 <div class="form__content">
                     <label for="billing">Billing Type</label>
-                    <input class="text-input" type="text" name="billingtype" value="<%out.print(rs.getString("billingtype"));%>">
+                   
+                
+                <select id="billingtype" class="text-input" name="billingtype">
+                    	<option value="none"></option>
+                    	<%if(rs.getString("billingtype").equals("prepaid")) {%>
+               
+                    	<option id="prepaid" value="prepaid" selected>Prepaid</option>
+                    	<option id="postpaid" value="postpaid">Postpaid</option>
+                    	
+                    	<%}
+                    	else{                   	
+                    	%>
+                    	<option id="prepaid" value="prepaid">Prepaid</option>
+                    	<option id="postpaid" value="postpaid" selected>Postpaid</option>
+                    	<%} %>
+                    </select>
+                
                 </div>
                 <div class="form__content">
                     <label for="refund">Refundable Amount</label>
@@ -146,6 +162,6 @@ catch(Exception e)
             </form>
         </div>
     </div>
-      
+     <script src="assets/js/logic.js"></script> 
 </body>
 </html>
