@@ -42,7 +42,11 @@
                 </div>
                 <div class="form__content">
                     <label for="band">Band</label>
-                    <input class="text-input" type="text" name="band">
+                    <select name="band" class="text-input">
+                    	<option value="I">I</option>
+                    	<option value="II">II</option>
+                    	<option value="III">III</option>
+                    </select>
                 </div>
                 <div class="form__content">
                     <label for="VCF">Video Carrier Frequency</label>
