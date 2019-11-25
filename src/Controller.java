@@ -113,6 +113,7 @@ public class Controller extends HttpServlet {
 					System.out.println(e);
 				}
 				break;
+				
 			case "editSetupBox":
 				try {
 				GenericSetTopBox gsp=new GenericSetTopBox();
@@ -139,7 +140,35 @@ public class Controller extends HttpServlet {
 				{
                 System.out.println(e);
 				}
-				break;	
+				break;
+				
+			case "addChannel":
+				try {
+					ChannelDetails cd = new ChannelDetails();
+					addChannel ac=new addChannel();
+					
+					cd.setChname(request.getParameter("channelName"));
+					cd.setChband(request.getParameter("band"));
+					cd.setChvfreq(request.getParameter("vfreq"));
+					cd.setChafreq(request.getParameter("afreq"));
+					cd.setChtypefta(request.getParameter("cct"));
+					cd.setChtranstypestd(request.getParameter("ctt"));
+					cd.setChcharges(Integer.parseInt(request.getParameter("charge")));
+					
+					
+					
+					int i=ac.addChannels(cd);
+					if(i==1)
+						response.sendRedirect("channels.jsp");
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+				break;
+				
+				
+				
 			default:
             	System.out.print("NOthing is working");
             	break;

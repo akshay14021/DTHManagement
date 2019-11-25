@@ -35,7 +35,7 @@
         <div class="content-container">
             <h1 class="add-settop__header">Add Channel</h1>
             <form class="form" action="Controller" method="post">
-            <input type="hidden" name="option" value="addSetupBox">
+            <input type="hidden" name="option" value="addChannel">
                 <div class="form__content">
                     <label for="ChannelName">Channel Name</label>
                     <input class="text-input" type="text" name="channelName">
@@ -54,16 +54,16 @@
                 </div>
                 <div class="form__content">
                     <label for="CCT">Channel Charge Type</label>
-                    <select id="billingtype" class="text-input" name="cct">
-                    	<option id="prepaid" value="fta">FTA (Free to Air)</option>
-                    	<option id="postpaid" value="paid">Paid</option>
+                    <select id="CCT" class="text-input" name="cct">
+                    	<option id="prepaid" value="FTA (Free to Air)">FTA (Free to Air)</option>
+                    	<option id="postpaid" value="Paid">Paid</option>
                     </select>
                 </div>
                 <div class="form__content">
                     <label for="CTT">Channel Transmission Type</label>
-                    <select id="billingtype" class="text-input" name="cct">
-                    	<option id="prepaid" value="standard">Standard</option>
-                    	<option id="postpaid" value="hd">HD</option>
+                    <select id="CTT" class="text-input" name="ctt">
+                    	<option id="prepaid" value="Standard">Standard</option>
+                    	<option id="postpaid" value="HD">HD</option>
                     </select>
                 </div>
                 <div class="form__content">
