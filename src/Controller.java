@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -90,22 +90,6 @@ public class Controller extends HttpServlet {
 					int i = asb.addSetTopBox(gsp);
 					int k = asb.addfeatures(gsp,arr);
 					if(i==1 && k==1)
-						response.sendRedirect("dashboard.jsp");
-				}
-				catch(Exception e)
-				{
-					System.out.println(e);
-				}
-				break;
-				
-			case "deleteGeneric":
-				try {
-					DeleteGeneric dg = new DeleteGeneric();
-					
-					int i = dg.deleteSetTop(request.getParameter("aId"));
-					
-					
-					if(i==1)
 						response.sendRedirect("dashboard.jsp");
 				}
 				catch(Exception e)
