@@ -24,7 +24,14 @@
     <title>Dashboard</title>
 </head>
 <body>
-
+<%
+    HttpSession mysess=request.getSession();
+    //String abc= mysess.getAttribute("username").toString();
+    if(mysess.getAttribute("username")==null)
+    {
+        response.sendRedirect("index.jsp");
+    }       
+%>
 <%
 try{
 	Connection con=null;
@@ -55,7 +62,7 @@ try{
                 <a href="packages.jsp" id="admin-header__content__data">Packages</a>
             </div>
         </div>
-        <button class="button">Logout</button>
+        <a href="logout.jsp"><button class="button">Logout</button></a>
     </header>
     <div class="admin-dashboard">
         <div class="content-container">

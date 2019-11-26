@@ -19,6 +19,14 @@
     <title>Add Channel</title>
 </head>
 <body>
+<%
+    HttpSession mysess=request.getSession();
+    //String abc= mysess.getAttribute("username").toString();
+    if(mysess.getAttribute("username")==null)
+    {
+        response.sendRedirect("index.jsp");
+    }       
+%>
 	<header class="admin-header">
         <div class="admin-header__links">
             <a href="dashboard.jsp"><img class="image image--header" src="assets/img/eternity.png" alt=""></a>
@@ -28,7 +36,7 @@
                 <a href="packages.jsp" id="admin-header__content__data">Packages</a>
             </div>
         </div>
-        <button class="button">Logout</button>
+        <a href="logout.jsp"><button class="button">Logout</button></a>
     </header>
     
     <div class="add-settop">
@@ -59,9 +67,9 @@
                 <div class="form__content">
                     <label for="CCT">Channel Charge Type</label>
                     <select id="CCT" class="text-input" name="cct">
-                    	<option value="none"></option>
+                    	
                     	<option id="prepaid" value="FTA (Free to Air)">FTA (Free to Air)</option>
-                    	<option id="postpaid" value="Paid">Paid</option>
+                    	<option id="postpaid" value="Paid" selected>Paid</option>
                     </select>
                 </div>
                 <div class="form__content">

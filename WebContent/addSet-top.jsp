@@ -18,6 +18,14 @@
     <title>Add Box</title>
 </head>
 <body>
+<%
+    HttpSession mysess=request.getSession();
+    //String abc= mysess.getAttribute("username").toString();
+    if(mysess.getAttribute("username")==null)
+    {
+        response.sendRedirect("index.jsp");
+    }       
+%>
     <header class="admin-header">
         <div class="admin-header__links">
             <a href="dashboard.jsp"><img class="image image--header" src="assets/img/eternity.png" alt=""></a>
@@ -27,7 +35,7 @@
                 <a href="packages.jsp" id="admin-header__content__data">Packages</a>
             </div>
         </div>
-        <button class="button">Logout</button>
+        <a href="logout.jsp"><button class="button">Logout</button></a>
     </header>
     <div class="add-settop">
         <div class="content-container">
